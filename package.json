@@ -1,0 +1,45 @@
+{
+  "name": "@leandromatos/commitlint-config",
+  "type": "module",
+  "version": "0.0.0-alpha.0",
+  "repository": "https://github.com/leandromatos/commitlint-config",
+  "author": "Leandro Matos",
+  "license": "MIT",
+  "keywords": [
+    "commitlint"
+  ],
+  "main": "./lib/config.js",
+  "types": "./lib/config.d.ts",
+  "scripts": {
+    "build": "yarn clean && tsc && tsc-alias",
+    "clean": "rimraf lib/*",
+    "lint:fix": "yarn lint --fix",
+    "lint": "eslint .",
+    "prepare": "husky install",
+    "test:cov": "vitest run --coverage",
+    "test:ui": "vitest --ui",
+    "test:watch": "vitest watch",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@commitlint/cli": "^19.2.1",
+    "@commitlint/config-conventional": "^19.1.0"
+  },
+  "devDependencies": {
+    "@commitlint/types": "^19.0.3",
+    "@leandromatos/eslint-config": "^3.0.0-rc.3",
+    "@types/node": "^20.12.7",
+    "@vitest/coverage-v8": "^1.5.0",
+    "@vitest/ui": "^1.5.0",
+    "eslint": "^9.0.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "rimraf": "^5.0.5",
+    "tsc-alias": "^1.8.8",
+    "typescript": "^5.4.5",
+    "vitest": "^1.5.0"
+  },
+  "peerDependencies": {
+    "@commitlint/cli": ">=19"
+  }
+}
