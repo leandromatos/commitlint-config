@@ -40,5 +40,8 @@
   },
   "peerDependencies": {
     "@commitlint/cli": ">=19"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
