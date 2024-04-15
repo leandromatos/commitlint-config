@@ -4,26 +4,19 @@
     "declaration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "lib": ["es2022"],
     "module": "NodeNext",
-    "moduleDetection": "force",
     "moduleResolution": "NodeNext",
-    "noImplicitAny": false,
-    "noUncheckedIndexedAccess": true,
-    "outDir": "lib",
+    "newLine": "lf",
+    "outDir": "./lib",
     "paths": {
       "@/*": ["./src/*"]
     },
-    "resolveJsonModule": true,
     "skipLibCheck": true,
-    "sourceMap": true,
     "strict": true,
-    "strictNullChecks": false,
-    "target": "es2022"
+    "target": "ESNext"
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "docs", "lib"],
+  "exclude": ["lib", "node_modules"],
   "tsc-alias": {
     "verbose": false,
     "resolveFullPaths": true

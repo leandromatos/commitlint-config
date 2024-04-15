@@ -4,11 +4,11 @@ import { describe, expect, it } from 'vitest'
 
 import config from '@/config.js'
 
-const { plugins, rules, parserPreset } = await load(config)
 const lintMessage = async (message: string) => {
+  const { plugins, rules, parserPreset } = await load(config)
   const result = await lint(message, rules, {
     plugins,
-    parserOpts: parserPreset.parserOpts,
+    parserOpts: parserPreset?.parserOpts ?? {},
   })
 
   return result

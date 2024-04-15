@@ -1,7 +1,7 @@
 {
   "name": "@leandromatos/commitlint-config",
   "type": "module",
-  "version": "0.0.0-alpha.0",
+  "version": "0.0.0-alpha.1",
   "repository": "https://github.com/leandromatos/commitlint-config",
   "author": "Leandro Matos",
   "license": "MIT",
@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@commitlint/types": "^19.0.3",
-    "@leandromatos/eslint-config": "^3.0.0-rc.5",
+    "@leandromatos/eslint-config": "^3.0.0-rc.6",
     "@types/node": "^20.12.7",
     "@vitest/coverage-v8": "^1.5.0",
     "@vitest/ui": "^1.5.0",

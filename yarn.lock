@@ -446,10 +446,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@leandromatos/eslint-config@^3.0.0-rc.5":
-  version "3.0.0-rc.5"
-  resolved "https://registry.yarnpkg.com/@leandromatos/eslint-config/-/eslint-config-3.0.0-rc.5.tgz#95d8e90d3c924512bc4f2ac734995f11ff8ed088"
-  integrity sha512-CnU4Hfa4+tYVLtBQcetUo/jrZVk+NO12rQZTSWepI+ZSrSUgpkOns+BfKcFPYRi2bnRQQhppHCvPO3PCtYYahw==
+"@leandromatos/eslint-config@^3.0.0-rc.6":
+  version "3.0.0-rc.6"
+  resolved "https://registry.yarnpkg.com/@leandromatos/eslint-config/-/eslint-config-3.0.0-rc.6.tgz#a590665311b09b659ecdf1c2d3526884ebcd9ede"
+  integrity sha512-HJZncrSpO0j+w1ym7rjvqEdBSZkntAF5tHjCDTepCs2019Z1kZ35hCDvzA3R5HjEXgGt36UZkZabyqghC95vaQ==
   dependencies:
     "@eslint/js" "^9.0.0"
     "@typescript-eslint/eslint-plugin" "^7.6.0"

@@ -1,10 +1,10 @@
-import config from '@leandromatos/eslint-config'
+import { flatConfig } from '@leandromatos/eslint-config'
 
 /**
  * @type {import('eslint').Linter.Config}
  */
 export default [
-  ...config,
+  ...flatConfig,
   {
     ignores: ['lib'],
   },

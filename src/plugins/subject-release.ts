@@ -2,7 +2,7 @@ import { Rule } from '@commitlint/types'
 
 export const subjectRelease: Rule = parsed => {
   const { type, scope, header } = parsed
-  if (isChoreRelease(type, scope) && isBreakingChange(header))
+  if (isChoreRelease(type!, scope!) && isBreakingChange(header!))
     return [false, 'the subject of a release commit cannot be a breaking change']
 
   return [true]
