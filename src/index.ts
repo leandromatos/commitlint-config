@@ -1,10 +1,23 @@
-import type { UserConfig } from '@commitlint/types'
+import type { ParserPreset, UserConfig } from '@commitlint/types'
 import { RuleConfigSeverity } from '@commitlint/types'
 
-import { parserPreset } from '@/parser-preset.js'
 import { selectiveScope } from '@/plugins/selective-scope.js'
 import { subjectRelease } from '@/plugins/subject-release.js'
 import type { CommitTypes } from '@/types/config.js'
+
+const parserPreset: ParserPreset = {
+  parserOpts: {
+    headerPattern: /^(\w*)(?:\((.*)\))?!?: (.*)$/,
+    breakingHeaderPattern: /^(\w*)(?:\((.*)\))?!: (.*)$/,
+    headerCorrespondence: ['type', 'scope', 'subject'],
+    noteKeywords: ['BREAKING CHANGE'],
+    revertPattern:
+      /^revert: "(?:(\w+)(?:\((.*?)\))?!?: (.*?)|(\w+)(?:\((.*?)\))?!: (.*?))"\s+This reverts commit (\w+)\.$/,
+    revertCorrespondence: ['header', 'hash'],
+    issuePrefixes: ['#'],
+    versionPattern: /^v\d+\.\d+\.\d+(-[a-zA-Z0-9]+(\.\d+)?)?$/,
+  },
+}
 
 export const commitTypes: CommitTypes = [
   'build',

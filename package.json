@@ -7,13 +7,14 @@
   "keywords": [
     "commitlint"
   ],
-  "main": "./lib/user-config.js",
-  "types": "./lib/user-config.d.ts",
+  "type": "module",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "exports": {
     ".": {
-      "types": "./lib/user-config.d.ts",
-      "import": "./lib/user-config.js",
-      "require": "./lib/user-config.js"
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib/index.js"
     }
   },
   "files": [

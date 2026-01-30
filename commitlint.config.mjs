@@ -1,7 +1,6 @@
-import userConfig from './lib/user-config.js'
+import userConfig from './lib/index.js'
 
 /** @type {import('@commitlint/types').UserConfig} */
 export default {
-  ...userConfig.default,
-  parserPreset: './lib/parser-preset.js',
+  ...userConfig,
 }
