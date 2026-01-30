@@ -7,6 +7,8 @@
   "keywords": [
     "commitlint"
   ],
+  "main": "./lib/user-config.js",
+  "types": "./lib/user-config.d.ts",
   "exports": {
     ".": {
       "types": "./lib/user-config.d.ts",
