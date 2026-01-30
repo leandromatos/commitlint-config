@@ -1,6 +1,6 @@
 {
   "name": "@leandromatos/commitlint-config",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "repository": "https://github.com/leandromatos/commitlint-config",
   "author": "Leandro Matos",
   "license": "MIT",
