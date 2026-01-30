@@ -1,0 +1,44 @@
+name: Check Pull Request
+
+on:
+  pull_request:
+    branches:
+      - main
+      - next
+      - release
+      - "release/**"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: "Check Pull Request"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: yarn
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install Dependencies
+        run: yarn
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Check Types
+        run: yarn tsc
+
+      - name: Run Tests
+        run: yarn test
+
+      - name: Validate PR Title
+        run: echo "${{ github.event.pull_request.title }}" | yarn commitlint --verbose

@@ -1,0 +1,17 @@
+{
+  "types": [
+    { "type": "feat", "section": "Features" },
+    { "type": "fix", "section": "Bug Fixes" },
+    { "type": "perf", "section": "Performance" },
+    { "type": "refactor", "section": "Refactoring" },
+    { "type": "docs", "section": "Documentation", "hidden": true },
+    { "type": "style", "hidden": true },
+    { "type": "chore", "hidden": true },
+    { "type": "ci", "hidden": true },
+    { "type": "build", "hidden": true },
+    { "type": "test", "hidden": true }
+  ],
+  "releaseCommitMessageFormat": "chore(release): v{{currentTag}}",
+  "commitUrlFormat": "https://github.com/leandromatos/commitlint-config/commit/{{hash}}",
+  "compareUrlFormat": "https://github.com/leandromatos/commitlint-config/compare/{{previousTag}}...{{currentTag}}"
+}

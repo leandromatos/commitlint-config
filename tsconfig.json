@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    // Basic Options
+    "target": "ESNext",
+    "module": "NodeNext",
+    "lib": ["ESNext"],
+    "types": ["node"],
+
+    // Module Resolution Options
+    "moduleResolution": "NodeNext",
+    "moduleDetection": "force",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+
+    // Emit Options
+    "outDir": "./lib",
+    "declaration": true,
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+
+    // Experimental Options
+    "experimentalDecorators": true,
+
+    // Strict Type-Checking Options
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+
+    // Additional Checks
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "skipLibCheck": true
+  },
+  "include": ["commitlint.config.mjs", "src/**/*.ts"],
+  "exclude": ["node_modules", "lib"]
+}

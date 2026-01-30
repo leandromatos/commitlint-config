@@ -1,0 +1,53 @@
+{
+  "name": "@leandromatos/commitlint-config",
+  "version": "0.0.0",
+  "repository": "https://github.com/leandromatos/commitlint-config",
+  "author": "Leandro Matos",
+  "license": "MIT",
+  "keywords": [
+    "commitlint"
+  ],
+  "main": "./lib/config.js",
+  "types": "./lib/config.d.ts",
+  "scripts": {
+    "build": "yarn clean && tsc && tsc-alias",
+    "clean": "rimraf lib/*",
+    "lint:fix": "yarn lint --fix",
+    "lint": "eslint .",
+    "prepare": "husky",
+    "test:cov": "vitest run --coverage",
+    "test:ui": "vitest --ui",
+    "test:watch": "vitest watch",
+    "test": "vitest",
+    "tsc": "tsc --noEmit",
+    "release": "commit-and-tag-version",
+    "release:snapshot": "./scripts/snapshot-version-bump.sh",
+    "release:patch": "commit-and-tag-version --release-as patch",
+    "release:minor": "commit-and-tag-version --release-as minor",
+    "release:major": "commit-and-tag-version --release-as major"
+  },
+  "dependencies": {
+    "@commitlint/cli": "^20.4.0",
+    "@commitlint/config-conventional": "^20.4.0"
+  },
+  "devDependencies": {
+    "@commitlint/types": "^20.4.0",
+    "@leandromatos/eslint-config": "^3.0.0-rc.40",
+    "@types/node": "^25.1.0",
+    "@vitest/coverage-v8": "^4.0.18",
+    "@vitest/ui": "^4.0.18",
+    "commit-and-tag-version": "^12.6.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "rimraf": "^6.1.2",
+    "tsc-alias": "^1.8.16",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  },
+  "peerDependencies": {
+    "@commitlint/cli": ">=19"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

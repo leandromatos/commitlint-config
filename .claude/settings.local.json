@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(yarn add:*)",
+      "WebFetch(domain:mermaid.js.org)",
+      "Bash(node:*)"
+    ]
+  },
+  "spinnerTipsEnabled": false
+}
