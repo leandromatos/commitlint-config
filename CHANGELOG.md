@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.2.0](https://github.com/leandromatos/commitlint-config/compare/v0.1.4...v0.2.0) (2026-04-30)
+
+
+### Features
+
+* Add selective-scope and subject-release plugins ([8a217c1](https://github.com/leandromatos/commitlint-config/commit/8a217c1729e6ec5cb3267de967854b0677e87c70))
+
 ## [0.1.4](https://github.com/leandromatos/commitlint-config/compare/v0.1.3...v0.1.4) (2026-01-30)
 
 
