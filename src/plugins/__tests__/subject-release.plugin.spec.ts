@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { lintMessage } from '@/__tests__/lint-message.util.js'
+import { lintMessage } from '@/__tests__'
 
 describe('Release Subject Plugin', () => {
   it('should be a valid commit message for release with prefix', async () => {

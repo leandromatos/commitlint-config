@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
-import { lintMessage } from '@/__tests__/lint-message.util.js'
-import userConfig from '@/index.js'
+import { lintMessage } from '@/__tests__'
+import userConfig from '@/index'
 
 describe('Config', () => {
   // Commit Messages
@@ -223,6 +223,85 @@ describe('Config', () => {
 
         it('should not pass the type-enum rule', async () => {
           const result = await lintMessage('wip: This is a work in progress')
+          expect(result.valid).toBe(false)
+        })
+      })
+
+      describe('selective-scope defaults', () => {
+        it('should accept feat without scope', async () => {
+          const result = await lintMessage('feat: Add new feature')
+          expect(result.valid).toBe(true)
+        })
+
+        it('should reject feat with any scope', async () => {
+          const result = await lintMessage('feat(api): Add new feature')
+          expect(result.valid).toBe(false)
+        })
+
+        it('should accept chore without scope', async () => {
+          const result = await lintMessage('chore: Update dependency lockfile')
+          expect(result.valid).toBe(true)
+        })
+
+        it('should accept chore with release scope', async () => {
+          const result = await lintMessage('chore(release): v1.2.3')
+          expect(result.valid).toBe(true)
+        })
+
+        it('should reject chore with any other scope', async () => {
+          const result = await lintMessage('chore(deps): Update dependency lockfile')
+          expect(result.valid).toBe(false)
+        })
+      })
+
+      describe('subject-release', () => {
+        it('should accept a semver release subject', async () => {
+          const result = await lintMessage('chore(release): v1.2.3')
+          expect(result.valid).toBe(true)
+          expect(result.errors).toStrictEqual([])
+          expect(result.warnings).toStrictEqual([])
+        })
+
+        it('should accept a semver release with prerelease modifier', async () => {
+          const result = await lintMessage('chore(release): v1.2.3-rc.1')
+          expect(result.valid).toBe(true)
+          expect(result.errors).toStrictEqual([])
+          expect(result.warnings).toStrictEqual([])
+        })
+
+        it('should accept a snapshot release with calendar modifier', async () => {
+          const result = await lintMessage('chore(release): v0.0.0-snapshot.20260412.1')
+          expect(result.valid).toBe(true)
+          expect(result.errors).toStrictEqual([])
+          expect(result.warnings).toStrictEqual([])
+        })
+
+        it('should accept an encoded date release with micro counter', async () => {
+          const result = await lintMessage('chore(release): v20260430.1')
+          expect(result.valid).toBe(true)
+          expect(result.errors).toStrictEqual([])
+          expect(result.warnings).toStrictEqual([])
+        })
+
+        it('should accept a calendar release with four segments', async () => {
+          const result = await lintMessage('chore(release): v2026.04.30.1')
+          expect(result.valid).toBe(true)
+          expect(result.errors).toStrictEqual([])
+          expect(result.warnings).toStrictEqual([])
+        })
+
+        it('should reject a release marked as breaking change', async () => {
+          const result = await lintMessage('chore(release)!: v1.0.0')
+          expect(result.valid).toBe(false)
+        })
+
+        it('should reject a release whose subject is not a version', async () => {
+          const result = await lintMessage('chore(release): New version')
+          expect(result.valid).toBe(false)
+        })
+
+        it('should not bypass rules for non-release chore scopes with version-like subjects', async () => {
+          const result = await lintMessage('chore(deps): v20260430.1')
           expect(result.valid).toBe(false)
         })
       })

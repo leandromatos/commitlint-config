@@ -1,8 +1,8 @@
 import { RuleConfigSeverity } from '@commitlint/types'
 import { describe, expect, it } from 'vitest'
 
-import { lintMessage } from '@/__tests__/lint-message.util.js'
-import type { SelectiveScopeConfig } from '@/types/config.js'
+import { lintMessage } from '@/__tests__'
+import type { SelectiveScopeConfig } from '@/types'
 
 const withScope = (scopeConfig: SelectiveScopeConfig) => ({
   'selective-scope': [RuleConfigSeverity.Error, 'always', scopeConfig] as const,

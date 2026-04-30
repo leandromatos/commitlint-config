@@ -1,262 +1,159 @@
 # Commitlint Config
 
-This repository contains a set of tools to help you standardize your commit messages. It is based on the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) with some customizations, including two custom plugins: `selective-scope` for per-type scope validation and `subject-release` for release commit enforcement.
+Shared [commitlint](https://commitlint.js.org/) configuration based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
-## Usage
+## Background
 
-Use yarn or another package manager to install the required dependencies:
+[commitlint](https://commitlint.js.org/) validates commit messages against a set of rules. A commit message under Conventional Commits has the structure:
+
+```plaintext
+type(scope): subject
+
+body
+
+footer
+```
+
+- **type**: keyword describing the kind of change (`feat`, `fix`, `chore`, …)
+- **scope**: optional, in parentheses, names the affected area
+- **subject**: short summary on the first line
+- **body** and **footer**: optional longer description and metadata
+
+Each commitlint rule checks one element of this structure. For example, `subject-case` checks the casing of the subject, `type-enum` checks that the type is in an allowed list, and `header-max-length` limits the length of the first line.
+
+This package extends [`@commitlint/config-conventional`](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional) (the standard rules from the Conventional Commits team) and adds two custom rules: `selective-scope` and `subject-release`.
+
+## Installation
 
 ```shell
 yarn add --dev @commitlint/cli @leandromatos/commitlint-config
 ```
 
-Then, create a `commitlint.config.js` in the root of your project with the following content:
+## Usage
+
+Create `commitlint.config.mjs` at the project root:
 
 ```js
 export default {
-  extends: [
-    "@leandromatos/commitlint-config"
-  ]
+  extends: ['@leandromatos/commitlint-config'],
 }
-
 ```
 
-## Rules
+## Defaults
 
-### Standard Rules
+This configuration extends [`@commitlint/config-conventional`](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional) and adds the rules below on top.
 
-These rules come from `@commitlint/config-conventional`.
+### Allowed types
 
-#### body-leading-blank
+`build`, `chore`, `ci`, `docs`, `feat`, `fix`, `perf`, `refactor`, `revert`, `style`, `test`.
 
-The `body-leading-blank` rule is used to enforce the presence of a blank line between the subject and the body if the body is present.
+### Allowed scopes per type (`selective-scope`)
+
+The `selective-scope` rule declares which scopes each commit type may use. By default:
+
+| Type       | Allowed scopes    |
+| ---------- | ----------------- |
+| `chore`    | `release` or none |
+| all others | none              |
+
+So `feat: Add feature` is accepted, `feat(api): Add feature` is rejected, `chore(release): v1.0.0` is accepted, and `chore(deps): Update lockfile` is rejected.
+
+### Release commits (`subject-release`)
+
+The `subject-release` rule recognizes release commits, validates that the subject is a version number, and rejects breaking change markers on them.
+
+A release commit is any commit whose `type` is `chore` and whose `scope` is `release`. Its subject must match the default version pattern `^v?\d+(\.\d+)+(-[a-zA-Z0-9]+(\.\d+)*)?$`, and the commit may not be flagged as a breaking change with `!`.
+
+Examples accepted:
 
 ```sh
-# ❌ Fail
-git commit -m "fix: Some message\nBody message"
-# ✅ Pass
-git commit -m "fix: Some message\n\nBody message"
+chore(release): v1.2.3
+chore(release): v1.2.3-rc.1
+chore(release): v0.0.0-snapshot.20260412.1
+chore(release): v20260430.1
+chore(release): v2026.04.30.1
 ```
 
-#### body-max-line-length
-
-The `body-max-line-length` rule is used to enforce a maximum line length for the body.
+Examples rejected:
 
 ```sh
-# ❌ Fail
-git commit -m "fix: Some message\n\nSome body message with more than 100 characters just for testing if the commitlint is working properly"
-# ✅ Pass
-git commit -m "fix: Some short commit message"
+chore(release): New version       # subject is not a version
+chore(release)!: v1.2.3           # breaking change marker
 ```
 
-#### footer-leading-blank
+A release commit is a marker — it records which versioned snapshot of the codebase a tag points to. It does not introduce code changes by itself. Breaking changes belong to the `feat!` or `fix!` commits that originally introduced them, where they are documented via the `BREAKING CHANGE:` footer. Marking the release commit with `!` would mislead changelog tooling that scans `!` to flag breaking entries: the breaking change would be attributed to the version-bump commit instead of to the actual change that caused it. The rule keeps that separation honest.
 
-The `footer-leading-blank` rule is used to enforce the presence of a blank line between the body and the footer.
+Valid release commits are added to the configuration's `ignores` list so that other rules (notably `subject-case`) are skipped for them. This is what allows a leading lowercase `v` in the subject, even though `subject-case` otherwise enforces sentence case.
 
-```sh
-# ❌ Fail
-git commit -m "fix: Some message\n\nBody message\nFooter message"
-# ✅ Pass
-git commit -m "fix: Some message\n\nBody message\n\nFooter message"
-```
+## Inherited rules
 
-#### footer-max-line-length
+These rules come from `@commitlint/config-conventional` and apply unchanged. Each rule name describes the element it validates — `header-max-length` limits the length of the first line, `subject-empty` requires a subject to exist, `subject-full-stop` forbids a trailing period in the subject, and so on. Refer to the [upstream documentation](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional) for full behavior:
 
-The `footer-max-line-length` rule is used to enforce a maximum line length for the footer.
+`body-leading-blank`, `body-max-line-length`, `footer-leading-blank`, `footer-max-line-length`, `header-max-length`, `header-trim`, `subject-case` (sentence case), `subject-empty`, `subject-full-stop`, `type-case`, `type-empty`.
 
-```sh
-# ❌ Fail
-git commit -m "fix: Some message\n\nSome footer message with more than 100 characters just for testing if the commitlint is working properly"
-# ✅ Pass
-git commit -m "fix: Some message\n\nFooter message"
-```
+## Customization
 
-#### header-max-length
+### Override allowed scopes per type
 
-The `header-max-length` rule is used to enforce a maximum line length for the header.
-
-```sh
-# ❌ Fail
-git commit -m "fix: Some message with more than 100 characters just for testing if the commitlint is working properly"
-# ✅ Pass
-git commit -m "fix: Some message"
-```
-
-#### header-trim
-
-The `header-trim` rule is used to enforce the absence of leading or trailing whitespaces in the header.
-
-```sh
-# ❌ Fail
-git commit -m " fix: Some message"
-# ❌ Fail
-git commit -m "fix: Some message "
-# ✅ Pass
-git commit -m "fix: Some message"
-```
-
-#### subject-case
-
-The `subject-case` rule is used to enforce the use of the sentence case.
-
-```sh
-# ❌ Fail
-git commit -m "fix: some message"
-# ✅ Pass
-git commit -m "fix: Some message"
-```
-
-#### subject-empty
-
-The `subject-empty` rule is used to enforce the presence of a subject.
-
-```sh
-# ❌ Fail
-git commit -m ""
-# ✅ Pass
-git commit -m "fix: Some message"
-```
-
-#### subject-full-stop
-
-The `subject-full-stop` rule is used to enforce the absence of a period at the end of the subject.
-
-```sh
-# ❌ Fail
-git commit -m "fix: Some message."
-# ✅ Pass
-git commit -m "fix: Some message"
-```
-
-#### type-case
-
-The `type-case` rule is used to enforce the use of the lowercase.
-
-```sh
-# ❌ Fail
-git commit -m "FIX: Some message"
-# ✅ Pass
-git commit -m "fix: Some message"
-```
-
-#### type-empty
-
-The `type-empty` rule is used to enforce the presence of a type.
-
-```sh
-# ❌ Fail
-git commit -m ": Some message"
-# ✅ Pass
-git commit -m "fix: Some message"
-```
-
-#### type-enum
-
-The `type-enum` rule is used to enforce the use of the following types:
-
-* `build`: Changes that affect the build system or external dependencies
-* `chore`: Changes that don't affect the source code
-* `ci`: Changes to our CI configuration files and scripts
-* `docs`: Documentation only changes
-* `feat`: A new feature
-* `fix`: A bug fix
-* `perf`: A code change that improves performance
-* `refactor`: A code change that neither fixes a bug nor adds a feature
-* `revert`: Reverts a previous commit
-* `style`: Changes that do not affect the meaning of the code (whitespace, formatting, missing semi-colons, etc)
-* `test`: Adding missing tests or correcting existing tests
-
-### Custom Rules
-
-These rules are provided by this config's custom plugins.
-
-#### selective-scope
-
-The `selective-scope` rule provides per-type scope validation. You can configure which scopes are allowed for each commit type by overriding the rule in your config:
+Pass a custom configuration to `selective-scope`:
 
 ```js
 export default {
-  extends: ["@leandromatos/commitlint-config"],
+  extends: ['@leandromatos/commitlint-config'],
   rules: {
-    "selective-scope": [2, "always", {
-      feat: ["api", "ui"],
-      fix: [null, "api", "ui"],
-      chore: [],
-      ci: [/^workflow-/],
-    }],
+    'selective-scope': [
+      2,
+      'always',
+      {
+        chore: [null, 'release'],
+        feat: ['api', 'ui'],
+        fix: [null, 'api', 'ui'],
+      },
+    ],
   },
 }
 ```
 
-**Configuration modes:**
+Configuration values per type:
 
-| Config value    | Meaning                                                       |
-| --------------- | ------------------------------------------------------------- |
-| `[]`            | Scope is **forbidden** for this type                          |
-| `['api', 'ui']` | Scope is **required** and must match one of the listed values |
-| `[null, 'api']` | Scope is **optional**; if provided, must match                |
-| `[/^feature-/]` | Scope must match the **regex** pattern                        |
+| Value           | Meaning                                             |
+| --------------- | --------------------------------------------------- |
+| `[]`            | scope forbidden                                     |
+| `['api', 'ui']` | scope required, must match one of the listed values |
+| `[null, 'api']` | scope optional; if present, must match              |
+| `[/^feature-/]` | scope must match the regex                          |
 
-**Examples:**
+Types not present in the configuration object are not validated by this rule.
 
-Given `feat: ['api', 'ui']`:
+### Override release identity or version pattern
 
-```sh
-# ❌ Fail: scope is required
-git commit -m "feat: Add endpoint"
-# ✅ Pass
-git commit -m "feat(api): Add endpoint"
-# ❌ Fail: scope 'core' not allowed
-git commit -m "feat(core): Add endpoint"
+Pass a custom configuration to `subject-release` and provide a matching `ignores` entry built with `buildReleaseIgnore` so that the `subject-case` bypass stays in sync:
+
+```js
+import { buildReleaseIgnore } from '@leandromatos/commitlint-config/lib/plugins/subject-release.js'
+
+const release = {
+  type: 'chore',
+  scope: 'release',
+  versionPattern: /^v?\d{8}\.\d+$/,
+}
+
+export default {
+  extends: ['@leandromatos/commitlint-config'],
+  ignores: [buildReleaseIgnore(release)],
+  rules: {
+    'subject-release': [2, 'always', release],
+  },
+}
 ```
 
-Given `chore: []`:
+`subject-release` configuration fields:
 
-```sh
-# ❌ Fail: scope is not allowed
-git commit -m "chore(deps): Update deps"
-# ✅ Pass
-git commit -m "chore: Update deps"
-```
-
-Given `fix: [null, 'api', 'ui']`:
-
-```sh
-# ✅ Pass: scope is optional
-git commit -m "fix: Resolve crash"
-# ✅ Pass
-git commit -m "fix(api): Resolve crash"
-# ❌ Fail: scope 'core' not allowed
-git commit -m "fix(core): Resolve crash"
-```
-
-Given `ci: [/^workflow-/]`:
-
-```sh
-# ✅ Pass
-git commit -m "ci(workflow-lint): Update"
-# ❌ Fail: scope doesn't match pattern
-git commit -m "ci(deploy): Update"
-```
-
-> **Note:** If you configure `chore` in `selective-scope`, make sure to include
-> `'release'` in the allowed scopes (e.g. `chore: ['release']` or
-> `chore: [null, 'release']`). Otherwise, the `subject-release` rule
-> — which expects `chore(release): vX.Y.Z` commits — will conflict
-> with `selective-scope`.
-
-#### subject-release
-
-The `subject-release` rule is used to enforce the presence of a release version in the subject, and it must be a non-breaking change.
-
-```sh
-# ❌ Fail
-git commit -m "chore(release): New version"
-# ❌ Fail
-git commit -m "chore(release)!: v1.0.0"
-# ✅ Pass
-git commit -m "chore(release): v1.0.0"
-```
+| Field            | Type   | Default                                     |
+| ---------------- | ------ | ------------------------------------------- |
+| `type`           | string | `'chore'`                                   |
+| `scope`          | string | `'release'`                                 |
+| `versionPattern` | RegExp | `/^v?\d+(\.\d+)+(-[a-zA-Z0-9]+(\.\d+)*)?$/` |
 
 ## Contributing
 
