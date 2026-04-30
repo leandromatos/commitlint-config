@@ -2,22 +2,22 @@
   "compilerOptions": {
     // Basic Options
     "target": "ESNext",
-    "module": "NodeNext",
+    "module": "Preserve",
     "lib": ["ESNext"],
     "types": ["node"],
 
     // Module Resolution Options
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "Bundler",
     "moduleDetection": "force",
-    "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     },
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
 
     // Emit Options
+    "rootDir": "./src",
     "outDir": "./lib",
     "declaration": true,
     "sourceMap": true,
@@ -36,6 +36,9 @@
     "isolatedModules": true,
     "skipLibCheck": true
   },
-  "include": ["commitlint.config.mjs", "src/**/*.ts"],
-  "exclude": ["node_modules", "lib"]
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "lib"],
+  "tsc-alias": {
+    "resolveFullPaths": true
+  }
 }

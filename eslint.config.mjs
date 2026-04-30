@@ -6,7 +6,7 @@ import { config } from '@leandromatos/eslint-config'
 export default [
   ...config,
   {
-    ignores: ['lib'],
+    ignores: ['lib', 'CHANGELOG.md'],
   },
   {
     files: ['commitlint.config.mjs'],
