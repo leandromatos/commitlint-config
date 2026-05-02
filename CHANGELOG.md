@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.3.0](https://github.com/leandromatos/commitlint-config/compare/v0.2.0...v0.3.0) (2026-05-02)
+
+
+### Features
+
+* Disable body and footer max line length by default ([3511350](https://github.com/leandromatos/commitlint-config/commit/3511350076f2fe4dc947cc70a31c5bb7308a5644))
+
 ## [0.2.0](https://github.com/leandromatos/commitlint-config/compare/v0.1.4...v0.2.0) (2026-04-30)
 
 
