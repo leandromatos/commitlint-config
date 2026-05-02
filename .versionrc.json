@@ -4,6 +4,7 @@
     { "type": "fix", "section": "Bug Fixes" },
     { "type": "perf", "section": "Performance" },
     { "type": "refactor", "section": "Refactoring" },
+    { "type": "revert", "section": "Reverts" },
     { "type": "docs", "section": "Documentation", "hidden": true },
     { "type": "style", "hidden": true },
     { "type": "chore", "hidden": true },
