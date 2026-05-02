@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.4.0](https://github.com/leandromatos/commitlint-config/compare/v0.3.0...v0.4.0) (2026-05-02)
+
+
+### Bug Fixes
+
+* Surface revert commits in the changelog ([2cb5dea](https://github.com/leandromatos/commitlint-config/commit/2cb5deae7e381a6a4051192fc229ed965cf05a6f))
+
+
+### Reverts
+
+* "feat: Disable body and footer max line length by default" ([2b73f10](https://github.com/leandromatos/commitlint-config/commit/2b73f103f38c8ceb9b5af41c317fdd16b470f308))
+
 ## [0.3.0](https://github.com/leandromatos/commitlint-config/compare/v0.2.0...v0.3.0) (2026-05-02)
 
 
