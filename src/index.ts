@@ -9,6 +9,8 @@ const userConfig: UserConfig = {
   parserPreset,
   ignores: [buildReleaseIgnore()],
   rules: {
+    'body-max-line-length': [RuleConfigSeverity.Disabled, 'always', 0],
+    'footer-max-line-length': [RuleConfigSeverity.Disabled, 'always', 0],
     'subject-case': [RuleConfigSeverity.Error, 'always', ['sentence-case']],
     'selective-scope': [
       RuleConfigSeverity.Error,

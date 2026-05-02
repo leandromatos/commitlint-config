@@ -46,18 +46,20 @@ describe('Config', () => {
 
       // body-max-line-length
       describe('body-max-line-length', () => {
-        it('should pass the body-max-line-length rule', async () => {
+        it('should pass with a short body', async () => {
           const result = await lintMessage('chore: This is a chore commit message\n\nThis is the body')
           expect(result.valid).toBe(true)
           expect(result.errors).toStrictEqual([])
           expect(result.warnings).toStrictEqual([])
         })
 
-        it('should not pass the body-max-line-length rule', async () => {
+        it('should pass with a long body because the rule is disabled by default', async () => {
           const result = await lintMessage(
-            'chore: This is a chore commit message\n\nThis is the body with a long line that should not pass the rule because it is too long and have more than 100 characters',
+            'chore: This is a chore commit message\n\nThis is the body with a long line that would otherwise fail the upstream rule because it has more than 100 characters',
           )
-          expect(result.valid).toBe(false)
+          expect(result.valid).toBe(true)
+          expect(result.errors).toStrictEqual([])
+          expect(result.warnings).toStrictEqual([])
         })
       })
 
@@ -88,7 +90,7 @@ describe('Config', () => {
 
       // footer-max-line-length
       describe('footer-max-line-length', () => {
-        it('should pass the footer-max-line-length rule', async () => {
+        it('should pass with a short footer', async () => {
           const result = await lintMessage(
             'chore: This is a chore commit message\n\nThis is the body\n\nThis is the footer',
           )
@@ -97,11 +99,13 @@ describe('Config', () => {
           expect(result.warnings).toStrictEqual([])
         })
 
-        it('should not pass the footer-max-line-length rule', async () => {
+        it('should pass with a long footer because the rule is disabled by default', async () => {
           const result = await lintMessage(
-            'chore: This is a chore commit message\n\nThis is the body\n\nThis is the footer with a long line that should not pass the rule because it is too long and have more than 100 characters',
+            'chore: This is a chore commit message\n\nThis is the body\n\nThis is the footer with a long line that would otherwise fail the upstream rule because it has more than 100 characters',
           )
-          expect(result.valid).toBe(false)
+          expect(result.valid).toBe(true)
+          expect(result.errors).toStrictEqual([])
+          expect(result.warnings).toStrictEqual([])
         })
       })
 
