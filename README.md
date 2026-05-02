@@ -47,10 +47,6 @@ This configuration extends [`@commitlint/config-conventional`](https://github.co
 
 `build`, `chore`, `ci`, `docs`, `feat`, `fix`, `perf`, `refactor`, `revert`, `style`, `test`.
 
-### Disabled length rules
-
-`body-max-line-length` and `footer-max-line-length` are disabled. The upstream defaults (100 characters) reject long URLs, stack traces, and quoted output that legitimately appear in commit bodies and footers, so this configuration turns them off. Re-enable them per project if needed.
-
 ### Allowed scopes per type (`selective-scope`)
 
 The `selective-scope` rule declares which scopes each commit type may use. By default:
@@ -93,7 +89,7 @@ Valid release commits are added to the configuration's `ignores` list so that ot
 
 These rules come from `@commitlint/config-conventional` and apply unchanged. Each rule name describes the element it validates — `header-max-length` limits the length of the first line, `subject-empty` requires a subject to exist, `subject-full-stop` forbids a trailing period in the subject, and so on. Refer to the [upstream documentation](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional) for full behavior:
 
-`body-leading-blank`, `footer-leading-blank`, `header-max-length`, `header-trim`, `subject-case` (sentence case), `subject-empty`, `subject-full-stop`, `type-case`, `type-empty`.
+`body-leading-blank`, `body-max-line-length`, `footer-leading-blank`, `footer-max-line-length`, `header-max-length`, `header-trim`, `subject-case` (sentence case), `subject-empty`, `subject-full-stop`, `type-case`, `type-empty`.
 
 ## Customization
 
