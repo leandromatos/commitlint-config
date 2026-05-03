@@ -300,6 +300,25 @@ describe('Config', () => {
           expect(result.valid).toBe(false)
         })
 
+        it('should accept a release whose subject carries a squash-merge PR suffix', async () => {
+          const result = await lintMessage('chore(release): v1.2.3 (#42)')
+          expect(result.valid).toBe(true)
+          expect(result.errors).toStrictEqual([])
+          expect(result.warnings).toStrictEqual([])
+        })
+
+        it('should accept a prerelease whose subject carries a squash-merge PR suffix', async () => {
+          const result = await lintMessage('chore(release): v1.2.3-rc.1 (#7)')
+          expect(result.valid).toBe(true)
+          expect(result.errors).toStrictEqual([])
+          expect(result.warnings).toStrictEqual([])
+        })
+
+        it('should reject a release whose squash-merge PR suffix is not numeric', async () => {
+          const result = await lintMessage('chore(release): v1.2.3 (#abc)')
+          expect(result.valid).toBe(false)
+        })
+
         it('should not bypass rules for non-release chore scopes with version-like subjects', async () => {
           const result = await lintMessage('chore(deps): v20260430.1')
           expect(result.valid).toBe(false)

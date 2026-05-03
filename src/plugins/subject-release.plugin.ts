@@ -10,7 +10,7 @@ export const breakingHeaderPattern = /^(\w*)(?:\((.*)\))?!: (.*)$/
 export const defaultSubjectReleaseConfig: SubjectReleaseConfig = {
   type: 'chore',
   scope: 'release',
-  versionPattern: /^v?\d+(\.\d+)+(-[a-zA-Z0-9]+(\.\d+)*)?$/,
+  versionPattern: /^v?\d+(\.\d+)+(-[a-zA-Z0-9]+(\.\d+)*)?( \(#\d+\))?$/,
 }
 
 export const subjectRelease: Rule<Partial<SubjectReleaseConfig>> = (parsed, _when, userOverride) => {
