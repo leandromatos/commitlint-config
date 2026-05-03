@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.5.0](https://github.com/leandromatos/commitlint-config/compare/v0.4.0...v0.5.0) (2026-05-03)
+
+
+### Bug Fixes
+
+* Tolerate GitHub squash-merge PR suffix in release version pattern ([61c0289](https://github.com/leandromatos/commitlint-config/commit/61c02895be2120cdadfbaed8bd56fda0658ac4a3)), closes [#42](https://github.com/leandromatos/commitlint-config/issues/42)
+
 ## [0.4.0](https://github.com/leandromatos/commitlint-config/compare/v0.3.0...v0.4.0) (2026-05-02)
 
 
