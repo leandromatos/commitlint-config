@@ -45,11 +45,8 @@
     "test:ui": "vitest --ui",
     "test:watch": "vitest watch",
     "test": "vitest run --pass-with-no-tests",
-    "release": "commit-and-tag-version",
     "release:snapshot": "./scripts/snapshot-version-bump.sh",
-    "release:patch": "commit-and-tag-version --release-as patch",
-    "release:minor": "commit-and-tag-version --release-as minor",
-    "release:major": "commit-and-tag-version --release-as major"
+    "release:production": "./scripts/production-version-bump.sh"
   },
   "dependencies": {
     "@commitlint/cli": "^21.2.0",
@@ -65,7 +62,6 @@
     "@types/node": "^26.1.0",
     "@vitest/coverage-v8": "^4.1.9",
     "@vitest/ui": "^4.1.9",
-    "commit-and-tag-version": "^12.7.3",
     "eslint": "^10.6.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.8",
