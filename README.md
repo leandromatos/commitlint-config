@@ -1,6 +1,6 @@
 # Commitlint Config
 
-Shared [commitlint](https://commitlint.js.org/) configuration based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+Personal [commitlint](https://commitlint.js.org/) configuration based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), with two custom rules: `selective-scope` and `subject-release`.
 
 ## Background
 
@@ -161,4 +161,4 @@ Contributions are welcome. Please see the [CONTRIBUTING](CONTRIBUTING.md) file f
 
 ## License
 
-This package is licensed under the MIT License. For more information, see the [LICENSE](LICENSE) file.
+This software is free and open source, released by Leandro Matos under the MIT License. See the [LICENSE](LICENSE) file for the full terms.
