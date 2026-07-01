@@ -39,23 +39,25 @@
     "release:major": "commit-and-tag-version --release-as major"
   },
   "dependencies": {
-    "@commitlint/cli": "^20.5.3",
-    "@commitlint/config-conventional": "^20.5.3"
+    "@commitlint/cli": "^21.2.0",
+    "@commitlint/config-conventional": "^21.2.0"
   },
   "devDependencies": {
-    "@commitlint/types": "^20.5.0",
-    "@leandromatos/eslint-config": "^3.0.0-rc.45",
-    "@types/node": "^25.6.0",
-    "@vitest/coverage-v8": "^4.1.5",
-    "@vitest/ui": "^4.1.5",
-    "commit-and-tag-version": "^12.7.1",
-    "eslint": "^9.39.2",
+    "@commitlint/types": "^21.2.0",
+    "@leandromatos/eslint-config": "^3.0.0-snapshot.20260701.2",
+    "@leandromatos/prettier-config": "^2.0.0-snapshot.20260701.2",
+    "@types/node": "^26.1.0",
+    "@vitest/coverage-v8": "^4.1.9",
+    "@vitest/ui": "^4.1.9",
+    "commit-and-tag-version": "^12.7.3",
+    "eslint": "^10.6.0",
     "husky": "^9.1.7",
-    "lint-staged": "^16.4.0",
+    "lint-staged": "^17.0.8",
+    "prettier": "^3.9.4",
     "rimraf": "^6.1.3",
-    "tsc-alias": "^1.8.16",
+    "tsc-alias": "^1.8.17",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.5"
+    "vitest": "^4.1.9"
   },
   "peerDependencies": {
     "@commitlint/cli": ">=19"

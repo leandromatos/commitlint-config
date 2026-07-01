@@ -1,17 +1,17 @@
-import { config } from '@leandromatos/eslint-config'
+import config from '@leandromatos/eslint-config'
 
 /**
- * @type {import('eslint').Linter.Config}
+ * @type {import('eslint').Linter.Config[]}
  */
 export default [
   ...config,
   {
-    ignores: ['lib', 'CHANGELOG.md'],
+    ignores: ['lib', 'coverage', 'CHANGELOG.md'],
   },
   {
     files: ['commitlint.config.mjs'],
     rules: {
-      'import/no-relative-parent-imports': 'off',
+      'import-x/no-relative-parent-imports': 'off',
       'no-restricted-imports': 'off',
     },
   },
