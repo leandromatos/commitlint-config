@@ -25,9 +25,8 @@ Any failure aborts the commit, so nothing lands until all of it passes.
 | Script            | Purpose                                       |
 | ----------------- | --------------------------------------------- |
 | `yarn build`      | Clean and compile with `tsc` and `tsc-alias`. |
-| `yarn tsc`        | Type-check without emitting.                  |
-| `yarn lint`       | Run ESLint over the repository.               |
-| `yarn lint:fix`   | Run ESLint with `--fix`.                      |
+| `yarn lint`       | Type-check and lint the repository.           |
+| `yarn lint:fix`   | Lint the repository with `--fix`.             |
 | `yarn test`       | Run the Vitest suite once.                    |
 | `yarn test:watch` | Run the suite in watch mode.                  |
 | `yarn test:cov`   | Run the suite with a coverage report.         |
