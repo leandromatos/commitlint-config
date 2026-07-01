@@ -418,7 +418,7 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-10.0.1.tgz#1e8a876f50117af8ab67e47d5ad94d38d6622583"
   integrity sha512-zeR9k5pd4gxjZ0abRoIaxdc7I3nDktoXZk2qOv9gCNWx3mVwEn32VRhyLaRsDiJjTs0xq/T8mfPtyuXu7GWBcA==
 
-"@eslint/markdown@^8.0.2":
+"@eslint/markdown@^8.0.3":
   version "8.0.3"
   resolved "https://registry.yarnpkg.com/@eslint/markdown/-/markdown-8.0.3.tgz#ab2c8a9203c2a27e62c19e586ddbd7d464872e56"
   integrity sha512-rBTSSShrq7e4O+PWfeE4azH4/CWPNrC+VGxBXiW00o3vYVJnznsZiDayj3KC9JztIMVRZxZHn2nrDIUau/4j7A==
@@ -537,13 +537,13 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@leandromatos/eslint-config@^3.0.0-snapshot.20260701.2":
-  version "3.0.0-snapshot.20260701.2"
-  resolved "https://registry.yarnpkg.com/@leandromatos/eslint-config/-/eslint-config-3.0.0-snapshot.20260701.2.tgz#cddf09af696f46e0846646314e8e9d4aba432459"
-  integrity sha512-3Xhlydlldemm74ufjXffQuO7SZcZOJXCu5pmzfhyYxCQ9aRzs6RF2vamvpKkaM6i+FVQXkIMMkaTQJUJAWGtNQ==
+"@leandromatos/eslint-config@^3.0.0-snapshot.20260701.3":
+  version "3.0.0-snapshot.20260701.3"
+  resolved "https://registry.yarnpkg.com/@leandromatos/eslint-config/-/eslint-config-3.0.0-snapshot.20260701.3.tgz#99f9f9b489c3ae7c18323f5c610f28b82247ab3d"
+  integrity sha512-Jq/OiLuQ3+OIUt7NmJUkV4HwsjZgN45uwjl07dNopCviIl4ezA6NhTae6cUP3HfTJQn4yPGy7V/FoWxtgQnQMg==
   dependencies:
     "@eslint/js" "^10.0.1"
-    "@eslint/markdown" "^8.0.2"
+    "@eslint/markdown" "^8.0.3"
     eslint-config-prettier "^10.1.8"
     eslint-plugin-import-x "^4.17.1"
     eslint-plugin-jsonc "^3.2.0"
