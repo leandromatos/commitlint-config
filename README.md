@@ -2,7 +2,16 @@
 
 Personal [commitlint](https://commitlint.js.org/) configuration based on [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), with two custom rules: `selective-scope` and `subject-release`.
 
-## Background
+## ✨ Features
+
+- **One config, every project** — a single source of truth for commit rules, so validation never drifts between repositories.
+- **Conventional Commits by default** — extends `@commitlint/config-conventional`, the standard rules from the Conventional Commits team.
+- **Scope control per type** — `selective-scope` declares which scopes each commit type may use, instead of allowing any scope everywhere.
+- **Release-aware** — `subject-release` recognizes release commits, requires their subject to be a version, and rejects breaking-change markers on them.
+- **Sentence-case subjects** — enforced everywhere except on release commits, where a leading lowercase `v` is allowed.
+- **Reference by string** — extend the package name; there is no rule body to copy.
+
+## 🧭 How It Works
 
 [commitlint](https://commitlint.js.org/) validates commit messages against a set of rules. A commit message under Conventional Commits has the structure:
 
@@ -21,15 +30,17 @@ footer
 
 Each commitlint rule checks one element of this structure. For example, `subject-case` checks the casing of the subject, `type-enum` checks that the type is in an allowed list, and `header-max-length` limits the length of the first line.
 
-This package extends [`@commitlint/config-conventional`](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional) (the standard rules from the Conventional Commits team) and adds two custom rules: `selective-scope` and `subject-release`.
+This package extends [`@commitlint/config-conventional`](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional) and adds two custom rules, `selective-scope` and `subject-release`, described under What's Included.
 
-## Installation
+## 📦 Installation
 
 ```shell
 yarn add --dev @commitlint/cli @leandromatos/commitlint-config
 ```
 
-## Usage
+`@commitlint/cli` is a peer dependency, so you bring your own.
+
+## 🚀 Quick Start
 
 Create `commitlint.config.mjs` at the project root:
 
@@ -39,9 +50,19 @@ export default {
 }
 ```
 
-## Defaults
+### Commit hook
 
-This configuration extends [`@commitlint/config-conventional`](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional) and adds the rules below on top.
+Wire commitlint into a [Husky](https://typicode.github.io/husky) `commit-msg` hook so every message is validated on commit. In `.husky/commit-msg`:
+
+```sh
+yarn commitlint --edit "$1"
+```
+
+The `--edit` flag reads the message from the file Git passes as `$1` — the commit message being written.
+
+## 🧩 What's Included
+
+Extends [`@commitlint/config-conventional`](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional) and adds the rules below on top.
 
 ### Allowed types
 
@@ -85,13 +106,13 @@ A release commit is a marker — it records which versioned snapshot of the code
 
 Valid release commits are added to the configuration's `ignores` list so that other rules (notably `subject-case`) are skipped for them. This is what allows a leading lowercase `v` in the subject, even though `subject-case` otherwise enforces sentence case.
 
-## Inherited rules
+### Inherited rules
 
 These rules come from `@commitlint/config-conventional` and apply unchanged. Each rule name describes the element it validates — `header-max-length` limits the length of the first line, `subject-empty` requires a subject to exist, `subject-full-stop` forbids a trailing period in the subject, and so on. Refer to the [upstream documentation](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional) for full behavior:
 
 `body-leading-blank`, `body-max-line-length`, `footer-leading-blank`, `footer-max-line-length`, `header-max-length`, `header-trim`, `subject-case` (sentence case), `subject-empty`, `subject-full-stop`, `type-case`, `type-empty`.
 
-## Customization
+## ⚙️ Configuration
 
 ### Override allowed scopes per type
 
@@ -155,10 +176,14 @@ export default {
 | `scope`          | string | `'release'`                                 |
 | `versionPattern` | RegExp | `/^v?\d+(\.\d+)+(-[a-zA-Z0-9]+(\.\d+)*)?$/` |
 
-## Contributing
+## 🏷️ Versioning
 
-Contributions are welcome. Please see the [CONTRIBUTING](CONTRIBUTING.md) file for more information.
+Semver, published to npm. The peer range is `@commitlint/cli >= 19`. Snapshots publish to the `snapshot` dist-tag as `X.Y.Z-snapshot.YYYYMMDD.N`; stable releases go to `latest`.
 
-## License
+## 🤝 Contributing
+
+This repository follows [Conventional Commits](https://www.conventionalcommits.org). See [CONTRIBUTING.md](CONTRIBUTING.md) for the workflow, releases, and local setup.
+
+## 📄 License
 
 This software is free and open source, released by Leandro Matos under the MIT License. See the [LICENSE](LICENSE) file for the full terms.
