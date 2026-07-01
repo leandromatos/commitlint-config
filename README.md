@@ -151,7 +151,7 @@ Types not present in the configuration object are not validated by this rule.
 Pass a custom configuration to `subject-release` and provide a matching `ignores` entry built with `buildReleaseIgnore` so that the `subject-case` bypass stays in sync:
 
 ```js
-import { buildReleaseIgnore } from '@leandromatos/commitlint-config/lib/plugins/subject-release.js'
+import { buildReleaseIgnore } from '@leandromatos/commitlint-config'
 
 const release = {
   type: 'chore',

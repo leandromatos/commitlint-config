@@ -1,8 +1,8 @@
 import { RuleConfigSeverity, type UserConfig } from '@commitlint/types'
 
-import { buildReleaseIgnore, commitTypes, parserPreset } from '@/config'
-import { defaultSubjectReleaseConfig, selectiveScope, subjectRelease } from '@/plugins'
-import { prompt } from '@/prompt'
+import { buildReleaseIgnore, commitTypes, parserPreset } from '@/config.js'
+import { defaultSubjectReleaseConfig, selectiveScope, subjectRelease } from '@/plugins/index.js'
+import { prompt } from '@/prompt.js'
 
 const userConfig: UserConfig = {
   extends: ['@commitlint/config-conventional'],
@@ -43,3 +43,4 @@ const userConfig: UserConfig = {
 }
 
 export default userConfig
+export { buildReleaseIgnore } from '@/config.js'
