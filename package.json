@@ -1,12 +1,17 @@
 {
   "name": "@leandromatos/commitlint-config",
   "version": "0.6.0-snapshot.20260701.3",
-  "repository": "https://github.com/leandromatos/commitlint-config",
-  "author": "Leandro Matos",
-  "license": "MIT",
+  "description": "Commitlint configuration based on Conventional Commits, with selective-scope and subject-release rules.",
   "keywords": [
-    "commitlint"
+    "commitlint",
+    "config"
   ],
+  "license": "MIT",
+  "author": "Leandro Matos",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leandromatos/commitlint-config.git"
+  },
   "type": "module",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -21,6 +26,11 @@
     "./lib/**",
     "LICENSE"
   ],
+  "publishConfig": {
+    "provenance": true,
+    "access": "public",
+    "tag": "latest"
+  },
   "scripts": {
     "build": "yarn clean && tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
     "clean": "rimraf lib/*",
@@ -42,6 +52,9 @@
     "@commitlint/cli": "^21.2.0",
     "@commitlint/config-conventional": "^21.2.0"
   },
+  "peerDependencies": {
+    "@commitlint/cli": ">=19"
+  },
   "devDependencies": {
     "@commitlint/types": "^21.2.0",
     "@leandromatos/eslint-config": "^3.0.0-snapshot.20260701.3",
@@ -58,11 +71,5 @@
     "tsc-alias": "^1.8.17",
     "typescript": "^6.0.3",
     "vitest": "^4.1.9"
-  },
-  "peerDependencies": {
-    "@commitlint/cli": ">=19"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
