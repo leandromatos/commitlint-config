@@ -146,13 +146,13 @@ We follow [Semantic Versioning](https://semver.org/) for versioning. Releases ar
 
 ### Release Scripts
 
-| Script | Description |
-| --- | --- |
-| `yarn release:snapshot` | Generate a snapshot version on `next` |
-| `yarn release` | Automatic bump (patch/minor/major) based on conventional commits |
-| `yarn release:patch` | Force a patch version bump |
-| `yarn release:minor` | Force a minor version bump |
-| `yarn release:major` | Force a major version bump |
+| Script                  | Description                                                      |
+| ----------------------- | ---------------------------------------------------------------- |
+| `yarn release:snapshot` | Generate a snapshot version on `next`                            |
+| `yarn release`          | Automatic bump (patch/minor/major) based on conventional commits |
+| `yarn release:patch`    | Force a patch version bump                                       |
+| `yarn release:minor`    | Force a minor version bump                                       |
+| `yarn release:major`    | Force a major version bump                                       |
 
 > [!NOTE]
 > For the very first release of a new project (no prior tags), use `yarn release --release-as 0.1.0` to create the initial version.
@@ -161,21 +161,21 @@ We follow [Semantic Versioning](https://semver.org/) for versioning. Releases ar
 
 1. Switch to the `main` branch:
 
-    ```bash
-    git checkout main
-    ```
+   ```bash
+   git checkout main
+   ```
 
 2. Run the release script:
 
-    ```bash
-    yarn release
-    ```
+   ```bash
+   yarn release
+   ```
 
 3. Push the commit and tag to the remote repository:
 
-    ```bash
-    git push --follow-tags
-    ```
+   ```bash
+   git push --follow-tags
+   ```
 
 The CI/CD pipeline will automatically publish the package to NPM when a `v*` tag is pushed.
 
@@ -183,38 +183,38 @@ The CI/CD pipeline will automatically publish the package to NPM when a `v*` tag
 
 1. Switch to the `next` branch:
 
-    ```bash
-    git checkout next
-    ```
+   ```bash
+   git checkout next
+   ```
 
 2. Run the snapshot script:
 
-    ```bash
-    yarn release:snapshot
-    ```
+   ```bash
+   yarn release:snapshot
+   ```
 
-    > [!NOTE]
-    > The `release:snapshot` script is a bash script. If you encounter permission issues, run `chmod +x ./scripts/snapshot-version-bump.sh`.
+   > [!NOTE]
+   > The `release:snapshot` script is a bash script. If you encounter permission issues, run `chmod +x ./scripts/snapshot-version-bump.sh`.
 
 3. Commit and tag the new version:
 
-    ```bash
-    git add --all
-    git commit -m "chore(release): v<NEW_VERSION>"
-    git tag -a v<NEW_VERSION> -m "chore(release): v<NEW_VERSION>"
-    ```
+   ```bash
+   git add --all
+   git commit -m "chore(release): v<NEW_VERSION>"
+   git tag -a v<NEW_VERSION> -m "chore(release): v<NEW_VERSION>"
+   ```
 
-    > [!IMPORTANT]
-    > Always use `git tag -a` (annotated tag) instead of `git tag` (lightweight tag). Annotated tags store author, date, and message, and are the only tags pushed by `--follow-tags`.
+   > [!IMPORTANT]
+   > Always use `git tag -a` (annotated tag) instead of `git tag` (lightweight tag). Annotated tags store author, date, and message, and are the only tags pushed by `--follow-tags`.
 
 4. Push to the remote repository:
 
-    ```bash
-    git push --follow-tags
-    ```
+   ```bash
+   git push --follow-tags
+   ```
 
-    > [!TIP]
-    > The `--follow-tags` flag only pushes annotated tags that reference commits being pushed. This prevents accidentally pushing unrelated tags, unlike `--tags` which pushes all local tags.
+   > [!TIP]
+   > The `--follow-tags` flag only pushes annotated tags that reference commits being pushed. This prevents accidentally pushing unrelated tags, unlike `--tags` which pushes all local tags.
 
 A snapshot version will only be published if the tag is pushed to the `next` branch.
 
