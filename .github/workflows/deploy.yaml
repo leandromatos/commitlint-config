@@ -1,17 +1,16 @@
-name: Publish Snapshot Package
+name: Publish package to NPM
 
 on:
   push:
     tags:
-      - "v*-snapshot.*"
+      - "v*"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  publish:
-    name: "Publish Snapshot Package"
+  deploy:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -46,9 +45,9 @@ jobs:
 
           TAG_COMMIT=$(git rev-list -n 1 "$TAG_NAME")
           git fetch origin "$BRANCH"
-          NEXT_COMMIT=$(git rev-parse origin/"$BRANCH")
+          BRANCH_COMMIT=$(git rev-parse origin/"$BRANCH")
 
-          if [ "$TAG_COMMIT" != "$NEXT_COMMIT" ]; then
+          if [ "$TAG_COMMIT" != "$BRANCH_COMMIT" ]; then
             echo "Tag '$TAG_NAME' is not pointing to the latest commit on '$BRANCH'"
             exit 1
           fi
@@ -60,5 +59,11 @@ jobs:
           COMMIT_MESSAGE=$(git log -1 --pretty=format:"%s" "$TAG_COMMIT")
           echo "$COMMIT_MESSAGE" | yarn commitlint --verbose
 
-      - name: Publish Snapshot to NPM
-        run: npm publish --tag snapshot
+      - name: Publish to NPM
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if [[ "$VERSION" == *-snapshot.* ]]; then
+            npm publish --tag snapshot
+          else
+            npm publish
+          fi
