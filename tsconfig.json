@@ -2,15 +2,16 @@
   "compilerOptions": {
     // Basic Options
     "target": "ESNext",
-    "module": "Preserve",
+    "module": "NodeNext",
     "lib": ["ESNext"],
     "types": ["node"],
 
     // Module Resolution Options
-    "moduleResolution": "Bundler",
+    "moduleResolution": "NodeNext",
     "moduleDetection": "force",
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["src/*"]
     },
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -18,13 +19,9 @@
 
     // Emit Options
     "rootDir": "./src",
-    "outDir": "./lib",
+    "outDir": "./dist",
     "declaration": true,
     "sourceMap": true,
-    "emitDecoratorMetadata": true,
-
-    // Experimental Options
-    "experimentalDecorators": true,
 
     // Strict Type-Checking Options
     "strict": true,
@@ -34,11 +31,10 @@
     // Additional Checks
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+
+    // Deprecations
+    "ignoreDeprecations": "6.0"
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "lib"],
-  "tsc-alias": {
-    "resolveFullPaths": true
-  }
+  "include": ["src"]
 }

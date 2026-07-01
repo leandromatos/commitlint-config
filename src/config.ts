@@ -1,7 +1,7 @@
 import type { ParserPreset } from '@commitlint/types'
 
-import { breakingHeaderPattern, defaultSubjectReleaseConfig } from '@/plugins'
-import type { CommitTypes, SubjectReleaseConfig } from '@/types'
+import { breakingHeaderPattern, defaultSubjectReleaseConfig } from '@/plugins/index.js'
+import type { CommitTypes, SubjectReleaseConfig } from '@/types/index.js'
 
 export const commitTypes: CommitTypes = [
   'build',

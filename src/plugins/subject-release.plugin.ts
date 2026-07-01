@@ -1,6 +1,6 @@
 import type { Rule } from '@commitlint/types'
 
-import type { ParsedCommit, SubjectReleaseConfig } from '@/types'
+import type { ParsedCommit, SubjectReleaseConfig } from '@/types/index.js'
 
 const BREAKING_CHANGE_NOT_ALLOWED_MESSAGE = 'a release commit cannot be a breaking change'
 const SUBJECT_NOT_VERSION_MESSAGE = 'a release commit subject must be a version'

@@ -1,6 +1,6 @@
 import type { Rule } from '@commitlint/types'
 
-import type { ScopePattern, SelectiveScopeConfig } from '@/types'
+import type { ScopePattern, SelectiveScopeConfig } from '@/types/index.js'
 
 export const selectiveScope: Rule<SelectiveScopeConfig> = (parsed, _when, config) => {
   const { type, scope } = parsed

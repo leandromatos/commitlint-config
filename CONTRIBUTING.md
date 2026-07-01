@@ -32,7 +32,7 @@ Any failure aborts the commit, so nothing lands until all of it passes.
 | `yarn test:watch` | Run the suite in watch mode.                  |
 | `yarn test:cov`   | Run the suite with a coverage report.         |
 
-The package is TypeScript, compiled to `lib/`. The two custom rules live in `src/plugins/`: `selective-scope` and `subject-release`.
+The package is TypeScript, compiled to `dist/`. The two custom rules live in `src/plugins/`: `selective-scope` and `subject-release`.
 
 ## Releases
 

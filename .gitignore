@@ -129,8 +129,8 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# Lib
-lib/
+# Compiled output
+dist/
 
 # NPM Config
 .npmrc

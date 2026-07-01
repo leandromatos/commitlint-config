@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
-import { lintMessage } from '@/__tests__'
-import userConfig from '@/index'
+import { lintMessage } from '@/__tests__/index.js'
+import userConfig from '@/index.js'
 
 describe('Config', () => {
   // Commit Messages

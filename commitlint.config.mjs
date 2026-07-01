@@ -1,4 +1,4 @@
-import userConfig from './lib/index.js'
+import userConfig from './dist/index.js'
 
 /** @type {import('@commitlint/types').UserConfig} */
 export default {

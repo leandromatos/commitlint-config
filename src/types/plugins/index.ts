@@ -1,1 +1,1 @@
-export type * from '@/types/plugins/subject-release.type'
+export type * from '@/types/plugins/subject-release.type.js'
