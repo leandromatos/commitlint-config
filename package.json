@@ -57,8 +57,8 @@
   },
   "devDependencies": {
     "@commitlint/types": "^21.2.0",
-    "@leandromatos/eslint-config": "^3.0.0-snapshot.20260701.3",
-    "@leandromatos/prettier-config": "^2.0.0-snapshot.20260701.2",
+    "@leandromatos/eslint-config": "^3.0.0-snapshot.20260701.7",
+    "@leandromatos/prettier-config": "^2.0.0-snapshot.20260705.1",
     "@types/node": "^26.1.0",
     "@vitest/coverage-v8": "^4.1.9",
     "@vitest/ui": "^4.1.9",

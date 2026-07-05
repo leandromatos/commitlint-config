@@ -532,10 +532,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@leandromatos/eslint-config@^3.0.0-snapshot.20260701.3":
-  version "3.0.0-snapshot.20260701.3"
-  resolved "https://registry.yarnpkg.com/@leandromatos/eslint-config/-/eslint-config-3.0.0-snapshot.20260701.3.tgz#99f9f9b489c3ae7c18323f5c610f28b82247ab3d"
-  integrity sha512-Jq/OiLuQ3+OIUt7NmJUkV4HwsjZgN45uwjl07dNopCviIl4ezA6NhTae6cUP3HfTJQn4yPGy7V/FoWxtgQnQMg==
+"@leandromatos/eslint-config@^3.0.0-snapshot.20260701.7":
+  version "3.0.0-snapshot.20260701.7"
+  resolved "https://registry.yarnpkg.com/@leandromatos/eslint-config/-/eslint-config-3.0.0-snapshot.20260701.7.tgz#628bb0222441e75f1c0c9566eb2f33001e57fbf8"
+  integrity sha512-NhykxpZRbfytJ6P/x6NSLgZYBAuv+7PZJQYoIUto1qjeCpWYxki1HG/x+oC4YdXv0IUARBrTAEgoKSOICsIIqA==
   dependencies:
     "@eslint/js" "^10.0.1"
     "@eslint/markdown" "^8.0.3"
@@ -549,10 +549,10 @@
     globals "^17.7.0"
     typescript-eslint "^8.62.1"
 
-"@leandromatos/prettier-config@^2.0.0-snapshot.20260701.2":
-  version "2.0.0-snapshot.20260701.2"
-  resolved "https://registry.yarnpkg.com/@leandromatos/prettier-config/-/prettier-config-2.0.0-snapshot.20260701.2.tgz#ff82abc888173fd71629190e0093d0c58c45aa4e"
-  integrity sha512-LNV5V60ZKM8O9m/z7gbEKhKTXkBSENnkc2W4JwAqctCdMvhfvJTqdBWtMMNEV1R4k9VPrPMstLPx5N3b4VUSTg==
+"@leandromatos/prettier-config@^2.0.0-snapshot.20260705.1":
+  version "2.0.0-snapshot.20260705.1"
+  resolved "https://registry.yarnpkg.com/@leandromatos/prettier-config/-/prettier-config-2.0.0-snapshot.20260705.1.tgz#0b344971b84d701f670aac516134b97838cf10ef"
+  integrity sha512-Q1oIBkwKWENe/gRb1tUyxb5chnM95yqHD+hWonvHfAlv55Lka4zOOiqaUquDzzKmT5g45f6kcOHMuESIxStY8Q==
   dependencies:
     prettier-plugin-tailwindcss "^0.8.0"
 
