@@ -1,6 +1,6 @@
 {
   "name": "@leandromatos/commitlint-config",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Commitlint configuration based on Conventional Commits, with selective-scope and subject-release rules.",
   "keywords": [
     "commitlint",
