@@ -49,14 +49,11 @@
     "release:production": "./scripts/production-version-bump.sh"
   },
   "dependencies": {
-    "@commitlint/cli": "^21.2.1",
-    "@commitlint/config-conventional": "^21.2.0"
-  },
-  "peerDependencies": {
-    "@commitlint/cli": ">=19"
+    "@commitlint/config-conventional": "^21.2.0",
+    "@commitlint/types": "^21.2.0"
   },
   "devDependencies": {
-    "@commitlint/types": "^21.2.0",
+    "@commitlint/cli": "^21.2.1",
     "@leandromatos/eslint-config": "^3.0.0",
     "@leandromatos/prettier-config": "^2.0.1",
     "@types/node": "^26.1.1",
