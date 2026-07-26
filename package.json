@@ -44,7 +44,9 @@
     "test:cov": "vitest run --coverage",
     "test:ui": "vitest --ui",
     "test:watch": "vitest watch",
-    "test": "vitest run --pass-with-no-tests",
+    "test": "yarn test:js && yarn test:sh",
+    "test:js": "vitest run --pass-with-no-tests",
+    "test:sh": "bats --recursive scripts/release/__tests__",
     "release:snapshot": "./scripts/release/snapshot.sh",
     "release:production": "./scripts/release/production.sh"
   },
@@ -62,6 +64,7 @@
     "@types/node": "^26.1.1",
     "@vitest/coverage-v8": "^4.1.10",
     "@vitest/ui": "^4.1.10",
+    "bats": "^1.13.0",
     "eslint": "^10.8.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.2.0",
