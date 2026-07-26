@@ -6,7 +6,7 @@ import config from '@leandromatos/eslint-config'
 export default [
   ...config,
   {
-    ignores: ['dist', 'coverage', 'CHANGELOG.md'],
+    ignores: ['dist', 'coverage'],
   },
   {
     files: ['commitlint.config.mjs'],
