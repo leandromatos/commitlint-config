@@ -48,6 +48,9 @@
     "release:snapshot": "./scripts/snapshot-version-bump.sh",
     "release:production": "./scripts/production-version-bump.sh"
   },
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "dependencies": {
     "@commitlint/config-conventional": "^21.2.0",
     "@commitlint/types": "^21.2.0"
