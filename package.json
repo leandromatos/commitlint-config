@@ -45,8 +45,8 @@
     "test:ui": "vitest --ui",
     "test:watch": "vitest watch",
     "test": "vitest run --pass-with-no-tests",
-    "release:snapshot": "./scripts/snapshot-version-bump.sh",
-    "release:production": "./scripts/production-version-bump.sh"
+    "release:snapshot": "./scripts/release/snapshot.sh",
+    "release:production": "./scripts/release/production.sh"
   },
   "engines": {
     "node": ">=22.12.0"
