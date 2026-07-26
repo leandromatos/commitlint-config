@@ -10,6 +10,7 @@ Personal [commitlint](https://commitlint.js.org/) configuration based on [Conven
 - **Release-aware** — `subject-release` recognizes release commits, requires their subject to be a version, and rejects breaking-change markers on them.
 - **Sentence-case subjects** — enforced everywhere except on release commits, where a leading lowercase `v` is allowed.
 - **Reference by string** — extend the package name; there is no rule body to copy.
+- **Typed** — publishes type declarations, so importing it from TypeScript gives you a checked `UserConfig` instead of an implicit `any`.
 
 ## 🧭 How It Works
 
@@ -38,7 +39,9 @@ This package extends [`@commitlint/config-conventional`](https://github.com/conv
 yarn add --dev @commitlint/cli @leandromatos/commitlint-config
 ```
 
-`@commitlint/cli` is a peer dependency, so you bring your own.
+`@commitlint/cli` is not bundled with this package, so install it yourself as shown above — the `commit-msg` hook invokes it directly.
+
+Node `>= 22.12.0` is required.
 
 ## 🚀 Quick Start
 
@@ -178,7 +181,7 @@ export default {
 
 ## 🏷️ Versioning
 
-Semver, published to npm. The peer range is `@commitlint/cli >= 19`. Snapshots publish to the `snapshot` dist-tag as `X.Y.Z-snapshot.YYYYMMDD.N`; stable releases go to `latest`.
+Semver, published to npm, targeting Node `>= 22.12.0`. Snapshots publish to the `snapshot` dist-tag as `X.Y.Z-snapshot.YYYYMMDD.N`; stable releases go to `latest`.
 
 ## 🤝 Contributing
 
