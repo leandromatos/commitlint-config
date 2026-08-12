@@ -35,7 +35,9 @@ This package extends [`@commitlint/config-conventional`](https://github.com/conv
 
 ## 📦 Installation
 
-```shell
+Install commitlint and the config as dev dependencies:
+
+```bash
 yarn add --dev @commitlint/cli @leandromatos/commitlint-config
 ```
 
