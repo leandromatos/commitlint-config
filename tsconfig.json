@@ -17,11 +17,10 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
 
-    // Emit Options
-    "rootDir": "./src",
-    "outDir": "./dist",
-    "declaration": true,
-    "sourceMap": true,
+    // Emit Options live in `tsconfig.build.json`, the only config that emits. `rootDir`
+    // in particular cannot sit here: the include below reaches `eslint.config.mts` at the
+    // repository root, which no `rootDir` under `src` can cover.
+    "noEmit": true,
 
     // Strict Type-Checking Options
     "strict": true,
@@ -36,5 +35,7 @@
     // Deprecations
     "ignoreDeprecations": "6.0"
   },
-  "include": ["src"]
+  // `eslint.config.mts` is included so ESLint's type-aware layer can resolve it through a
+  // project; a config file no project covers fails to parse rather than being linted.
+  "include": ["eslint.config.mts", "src"]
 }

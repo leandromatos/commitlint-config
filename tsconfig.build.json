@@ -2,7 +2,13 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     // Emit Options
+    "noEmit": false,
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "declaration": true,
     "sourceMap": false
   },
-  "exclude": ["dist", "node_modules", "src/**/__tests__/**"]
+  // `eslint.config.mts` is excluded because it is tooling, not package source: it sits
+  // outside `rootDir` and has no business emitting into `dist`.
+  "exclude": ["dist", "node_modules", "eslint.config.mts", "src/**/__tests__/**"]
 }
