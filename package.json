@@ -58,11 +58,11 @@
   },
   "packageManager": "pnpm@11.21.0",
   "dependencies": {
-    "@commitlint/config-conventional": "^21.2.0",
+    "@commitlint/config-conventional": "^21.2.2",
     "@commitlint/types": "^21.2.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^21.2.1",
+    "@commitlint/cli": "^21.2.2",
     "@leandromatos/eslint-config": "^3.2.0",
     "@leandromatos/prettier-config": "^2.1.1",
     "@types/node": "^26.2.0",
