@@ -4,13 +4,13 @@ Personal [commitlint](https://commitlint.js.org/) configuration based on [Conven
 
 ## ✨ Features
 
-- **One config, every project** — a single source of truth for commit rules, so validation never drifts between repositories.
-- **Conventional Commits by default** — extends `@commitlint/config-conventional`, the standard rules from the Conventional Commits team.
-- **Scope control per type** — `selective-scope` declares which scopes each commit type may use, instead of allowing any scope everywhere.
-- **Release-aware** — `subject-release` recognizes release commits, requires their subject to be a version, and rejects breaking-change markers on them.
-- **Sentence-case subjects** — enforced everywhere except on release commits, where a leading lowercase `v` is allowed.
-- **Reference by string** — extend the package name; there is no rule body to copy.
-- **Typed** — publishes type declarations, so importing it from TypeScript gives you a checked `UserConfig` instead of an implicit `any`.
+- **One config, every project.** A single source of truth for commit rules, so validation never drifts between repositories.
+- **Conventional Commits by default.** Extends `@commitlint/config-conventional`, the standard rules from the Conventional Commits team.
+- **Scope control per type.** `selective-scope` declares which scopes each commit type may use, instead of allowing any scope everywhere.
+- **Release-aware.** `subject-release` recognizes release commits, requires their subject to be a version, and rejects breaking-change markers on them.
+- **Sentence-case subjects.** Enforced everywhere except on release commits, where a leading lowercase `v` is allowed.
+- **Reference by string.** Extend the package name; there is no rule body to copy.
+- **Typed.** Publishes type declarations, so importing it from TypeScript gives you a checked `UserConfig` instead of an implicit `any`.
 
 ## 🧭 How It Works
 
@@ -41,7 +41,7 @@ Install commitlint and the config as dev dependencies:
 yarn add --dev @commitlint/cli @leandromatos/commitlint-config
 ```
 
-`@commitlint/cli` is not bundled with this package, so install it yourself as shown above — the `commit-msg` hook invokes it directly.
+`@commitlint/cli` is not bundled with this package, so install it yourself as shown above. The `commit-msg` hook invokes it directly.
 
 Node `>= 22.12.0` is required.
 
@@ -63,7 +63,7 @@ Wire commitlint into a [Husky](https://typicode.github.io/husky) `commit-msg` ho
 yarn commitlint --edit "$1"
 ```
 
-The `--edit` flag reads the message from the file Git passes as `$1` — the commit message being written.
+The `--edit` flag reads the message from the file Git passes as `$1`, the commit message being written.
 
 ## 🧩 What's Included
 
@@ -107,13 +107,13 @@ chore(release): New version       # subject is not a version
 chore(release)!: v1.2.3           # breaking change marker
 ```
 
-A release commit is a marker — it records which versioned snapshot of the codebase a tag points to. It does not introduce code changes by itself. Breaking changes belong to the `feat!` or `fix!` commits that originally introduced them, where they are documented via the `BREAKING CHANGE:` footer. Marking the release commit with `!` would mislead changelog tooling that scans `!` to flag breaking entries: the breaking change would be attributed to the version-bump commit instead of to the actual change that caused it. The rule keeps that separation honest.
+A release commit is a marker. It records which versioned snapshot of the codebase a tag points to. It does not introduce code changes by itself. Breaking changes belong to the `feat!` or `fix!` commits that originally introduced them, where they are documented via the `BREAKING CHANGE:` footer. Marking the release commit with `!` would mislead changelog tooling that scans `!` to flag breaking entries: the breaking change would be attributed to the version-bump commit instead of to the actual change that caused it. The rule keeps that separation honest.
 
 Valid release commits are added to the configuration's `ignores` list so that other rules (notably `subject-case`) are skipped for them. This is what allows a leading lowercase `v` in the subject, even though `subject-case` otherwise enforces sentence case.
 
 ### Inherited rules
 
-These rules come from `@commitlint/config-conventional` and apply unchanged. Each rule name describes the element it validates — `header-max-length` limits the length of the first line, `subject-empty` requires a subject to exist, `subject-full-stop` forbids a trailing period in the subject, and so on. Refer to the [upstream documentation](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional) for full behavior:
+These rules come from `@commitlint/config-conventional` and apply unchanged. Each rule name describes the element it validates: `header-max-length` limits the length of the first line, `subject-empty` requires a subject to exist, `subject-full-stop` forbids a trailing period in the subject, and so on. Refer to the [upstream documentation](https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional) for full behavior:
 
 `body-leading-blank`, `body-max-line-length`, `footer-leading-blank`, `footer-max-line-length`, `header-max-length`, `header-trim`, `subject-case` (sentence case), `subject-empty`, `subject-full-stop`, `type-case`, `type-empty`.
 
