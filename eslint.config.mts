@@ -1,10 +1,8 @@
-import config from '@leandromatos/eslint-config'
+import type { Config } from '@leandromatos/eslint-config'
+import { configs } from '@leandromatos/eslint-config'
 
-export default [
-  ...config,
-  {
-    ignores: ['dist', 'coverage'],
-  },
+const eslintConfig: Config[] = [
+  ...configs.recommended(),
   {
     files: ['commitlint.config.mjs'],
     rules: {
@@ -13,3 +11,5 @@ export default [
     },
   },
 ]
+
+export default eslintConfig

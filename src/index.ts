@@ -1,4 +1,5 @@
-import { RuleConfigSeverity, type UserConfig } from '@commitlint/types'
+import type { UserConfig } from '@commitlint/types'
+import { RuleConfigSeverity } from '@commitlint/types'
 
 import { buildReleaseIgnore, commitTypes, parserPreset } from '@/config.js'
 import { defaultSubjectReleaseConfig, selectiveScope, subjectRelease } from '@/plugins/index.js'
